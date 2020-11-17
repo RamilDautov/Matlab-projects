@@ -3,7 +3,7 @@ function life
 f=openfig([mfilename '.fig']);
 h=guihandles(f);
 guidata(f,h);
-L=30; % Количество клеток по одному измерению будет (L-1)
+L=30; % ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ«ГҐГІГ®ГЄ ГЇГ® Г®Г¤Г­Г®Г¬Гі ГЁГ§Г¬ГҐГ°ГҐГ­ГЁГѕ ГЎГіГ¤ГҐГІ (L-1)
 X=zeros(L,L); % determination of the grid
 pc=pcolor(h.axes,X);
 set(pc,'UserData',X,'Facecolor',[0 0 0.58]);
@@ -33,7 +33,7 @@ try x=eval(get(h.edit,'String')); end
 err=0;
 if ~exist('x') || ~isnumeric(x) || ~isscalar(x) || ~isreal(x) || isnan(x) || isinf(x)...
         || x<=0
-    set(h.edit,'ForegroundColor','red'); % текст в поле ввода "Задержка" делаем красным
+    set(h.edit,'ForegroundColor','red'); % ГІГҐГЄГ±ГІ Гў ГЇГ®Г«ГҐ ГўГўГ®Г¤Г  "Г‡Г Г¤ГҐГ°Г¦ГЄГ " Г¤ГҐГ«Г ГҐГ¬ ГЄГ°Г Г±Г­Г»Г¬
     err=1;
 end
 if err, return, end
@@ -69,7 +69,7 @@ while (isempty(get(h.stop_button,'UserData')))
     pc=pcolor(h.axes,X_N);
     set(h.axes,'XTick',[]);
     set(h.axes,'YTick',[]);
-    if X_N==zeros(H+1) %Проверка на то, не опустело ли поле
+    if X_N==zeros(H+1) %ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГІГ®, Г­ГҐ Г®ГЇГіГ±ГІГҐГ«Г® Г«ГЁ ГЇГ®Г«ГҐ
         warndlg('Game Over!','HA-HA-HA!','modal');
         set(h.start_button,'Enable','on');
 set(pc,'UserData',X_N,'ButtonDownFcn',@Click);
@@ -108,7 +108,7 @@ set(pc,'ButtonDownFcn',@Click,'UserData',X);
 function Cellnum(hobj)
 h=guidata(hobj);
 hold off
-answer=inputdlg('Введите количество клеток вдоль одной оси','Создание нового поля', 1, {'1'},'on');
+answer=inputdlg('Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ«ГҐГІГ®ГЄ ГўГ¤Г®Г«Гј Г®Г¤Г­Г®Г© Г®Г±ГЁ','Г‘Г®Г§Г¤Г Г­ГЁГҐ Г­Г®ГўГ®ГЈГ® ГЇГ®Г«Гї', 1, {'1'},'on');
 try
     x=eval(answer{1});
 end;
@@ -122,8 +122,8 @@ pc=pcolor(h.axes,Y);
     set(pc,'ButtonDownFcn',@Click,'UserData',Y,'Facecolor',[0 0 0.58]);
 else
     
-    errordlg('Не удалось создать поле',...
-        'Ошибка создания поля', 'modal');
+    errordlg('ГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г±Г®Г§Г¤Г ГІГј ГЇГ®Г«ГҐ',...
+        'ГЋГёГЁГЎГЄГ  Г±Г®Г§Г¤Г Г­ГЁГї ГЇГ®Г«Гї', 'modal');
 end
 set(h.axes,'XTick',[]);
 set(h.axes,'YTick',[]);
